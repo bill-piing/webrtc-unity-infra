@@ -1,0 +1,29 @@
+# OS Files
+.DS_Store
+
+# IDE
+.idea/
+
+# Node.js
+node_modules/
+bun.lock
+package-lock.json
+yarn.lock
+
+# Unity builds
+builds/
+
+# AWS credentials
+*.pem
+
+# Docker
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.bak
+*.backup

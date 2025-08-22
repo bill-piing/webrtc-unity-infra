@@ -1,0 +1,6 @@
+name: unity-webrtc-streaming
+runtime:
+  name: nodejs
+  options:
+    typescript: true
+description: Unity WebRTC Streaming Infrastructure on AWS ECS with GPU

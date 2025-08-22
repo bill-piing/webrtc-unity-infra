@@ -1,0 +1,23 @@
+{
+  "name": "unity-webrtc-streaming-infra",
+  "version": "1.0.0",
+  "description": "Pulumi infrastructure for Unity WebRTC streaming on AWS ECS with GPU support",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "src/node_modules/.bin/tsc",
+    "deploy": "pulumi up",
+    "preview": "pulumi preview",
+    "destroy": "pulumi destroy",
+    "refresh": "pulumi refresh"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/aws": "^6.0.0",
+    "@pulumi/awsx": "^2.0.0",
+    "@pulumi/docker": "^4.0.0"
+  }
+}

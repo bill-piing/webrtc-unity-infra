@@ -1,0 +1,10 @@
+encryptionsalt: v1:0tUEO/8fR1M=:v1:1jf4/cZU8s9c7UNX:r8STMNsLUTwT5oTFNRId66CnmLqeWg==
+config:
+  aws:region: eu-west-2
+  unity-webrtc-streaming:accountId: "462617661285"
+  unity-webrtc-streaming:instanceId: "i-0c44b75175752eb0a"
+  unity-webrtc-streaming:clusterName: "unity-streaming-test"
+  unity-webrtc-streaming:ecrRepository: "piing-streaming/unity"
+  unity-webrtc-streaming:securityGroupId: "sg-02d32309b1810e22a"
+  unity-webrtc-streaming:dockerfilePath: "../Dockerfile.gpu"
+  unity-webrtc-streaming:buildsPath: "../builds"

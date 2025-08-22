@@ -1,0 +1,80 @@
+{
+  "family": "unity-webrtc-streaming-gpu",
+  "taskRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "4096",
+  "memory": "15360",
+  "placementConstraints": [
+    {
+      "type": "memberOf",
+      "expression": "attribute:ecs.instance-type =~ g4dn.*"
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "unity-webrtc-streamer",
+      "image": "YOUR_ECR_REPO_URI:latest",
+      "cpu": 4096,
+      "memory": 15360,
+      "essential": true,
+      "resourceRequirements": [
+        {
+          "type": "GPU",
+          "value": "1"
+        }
+      ],
+      "environment": [
+        {
+          "name": "NVIDIA_VISIBLE_DEVICES",
+          "value": "all"
+        },
+        {
+          "name": "NVIDIA_DRIVER_CAPABILITIES",
+          "value": "graphics,utility,compute,display"
+        },
+        {
+          "name": "DISPLAY",
+          "value": ":99"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        },
+        {
+          "containerPort": 10000,
+          "protocol": "udp"
+        },
+        {
+          "containerPort": 10001,
+          "protocol": "udp"
+        },
+        {
+          "containerPort": 10002,
+          "protocol": "udp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/unity-webrtc-streaming",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "linuxParameters": {
+        "sharedMemorySize": 1024,
+        "devices": [
+          {
+            "hostPath": "/dev/dri/renderD128",
+            "containerPath": "/dev/dri/renderD128",
+            "permissions": ["read", "write", "mknod"]
+          }
+        ]
+      }
+    }
+  ]
+}
